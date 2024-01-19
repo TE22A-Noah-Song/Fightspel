@@ -12,12 +12,16 @@ public class App {
         Scanner t=new Scanner(System.in);
         System.out.println("Välkommen till fightspel. Välj val:\n 1. Starta\n 2. Avsluta");
         String val=t.nextLine();
+
+        String SpelarNamn = ""; 
+        String DatorNamn = "";
+        String VemsTur = "";
         if (val.equalsIgnoreCase("Starta"))
         {
             System.out.println("Döp din spelare:");
-            String SpelarNamn=t.nextLine();
+            SpelarNamn=t.nextLine();
             System.out.println("Döp din motståndare:");
-            String DatorNamn=t.nextLine();
+            DatorNamn=t.nextLine();
 
 
 
@@ -26,8 +30,6 @@ public class App {
             System.out.println(SpelarNamn+" fick: "+SpelareSlumpStart);
             Thread.sleep(2000);
             System.out.println(DatorNamn+" fick: "+DatorSlumpStart);
-
-            String VemsTur;
 
             if (SpelareSlumpStart>DatorSlumpStart)
             {
@@ -57,7 +59,17 @@ public class App {
 
         while (SpelareHP > 0 && DatorHP > 0)
         {
+        System.out.println(SpelarNamn+" HP:"+SpelareHP);
+        System.out.println(DatorNamn+" HP:"+DatorHP);
+
+        if (VemsTur.equals("Spelare")) {
+            System.out.println("Det är spelarens tur att agera.");
+            Thread.sleep(2000);
+            System.out.println("Välj nästa drag:\n 1. Anfall\n 2. Försvara");
+            String TurVal=t.nextLine();
         
         }
-    }
+
+     }
+  }
 }
