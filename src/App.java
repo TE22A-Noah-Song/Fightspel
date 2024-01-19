@@ -27,9 +27,9 @@ public class App {
 
             System.out.println("Nu slumpas vem som ska börja. Den som får högst börjar!");
             Thread.sleep(2000);
-            System.out.println(SpelarNamn+" fick: "+SpelareSlumpStart);
+            System.out.println(SpelarNamn+" fick:"+SpelareSlumpStart);
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" fick: "+DatorSlumpStart);
+            System.out.println(DatorNamn+" fick:"+DatorSlumpStart);
 
             if (SpelareSlumpStart>DatorSlumpStart)
             {
@@ -47,7 +47,8 @@ public class App {
 
         else if (val.equalsIgnoreCase("Avsluta"))
         {
-            System.out.println("Avslutar spelet....");    
+            System.out.println("Avslutar spelet....");  
+            System.exit(0);  
         }
 
         else{
@@ -65,11 +66,29 @@ public class App {
         if (VemsTur.equals("Spelare")) {
             System.out.println("Det är spelarens tur att agera.");
             Thread.sleep(2000);
-            System.out.println("Välj nästa drag:\n 1. Anfall\n 2. Försvara");
+            System.out.println("Välj nästa drag:\n 1. Anfall\n 2. Stort anfall (riskabelt)");
             String TurVal=t.nextLine();
         
+        int SpelareTal = tärning.nextInt(5) + 1;
+        int DatorTal = tärning.nextInt(5) + 1;
+        if (TurVal.equalsIgnoreCase("Anfall"))
+        {
+             SpelareTal= tärning.nextInt(5)+1; 
+            System.out.println(SpelarNamn+" Attackerar med siffran "+SpelareTal); 
+             DatorTal= tärning.nextInt(5)+1;
+            System.out.println(DatorNamn+" Försvarar med siffran "+DatorTal); 
+        }
+        if (SpelareTal>DatorTal)
+        {
+        int Skada=SpelareTal-DatorTal;
+        System.out.println(SpelarNamn+" träffade "+DatorNamn+" med skadan "+Skada);
+        DatorHP-=Skada;
+        VemsTur="Dator";
         }
 
+        }
+    
+        
      }
   }
 }
