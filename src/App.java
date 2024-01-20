@@ -83,6 +83,9 @@ public class App {
         
         int SpelareTal = tärning.nextInt(5) + 1;
         int DatorTal = tärning.nextInt(5) + 1;
+
+        //Anfall
+
         if (TurVal.equalsIgnoreCase("Anfall"))
         {
              SpelareTal= tärning.nextInt(5)+1; 
@@ -100,6 +103,7 @@ public class App {
         }
         }
         
+        //Stort Anfall
 
         else if (TurVal.equalsIgnoreCase("Stort Anfall")) {
             SpelareTal = tärning.nextInt(5) + 1;
@@ -120,17 +124,12 @@ public class App {
                 Thread.sleep(2000);
                 VemsTur = "Dator";
             }
-        } else {
-            // Move the else block here to handle the case when TurVal is neither "Anfall" nor "Stort Anfall"
-            Thread.sleep(2000);
-            System.out.println(DatorNamn + " valde Stort Anfall");
-        }
-        }
-        
+        } 
+    }
 
-        //Datorns tur
+    //Datorns tur
 
-        else if(VemsTur.equals("Dator")){
+    else if(VemsTur.equals("Dator")){
         Thread.sleep(2000);
         System.out.println(SpelarNamn+" HP:"+SpelareHP);
         Thread.sleep(2000);
@@ -139,19 +138,22 @@ public class App {
         System.out.println("Det är "+DatorNamn+"s" +" tur att agera.");
         Thread.sleep(2000);
         int DatorVal= tärning.nextInt(2)+1;
+
+        //Dator Anfall
+
         if (DatorVal==1){
             Thread.sleep(2000);
             System.out.println(DatorNamn+" valde Anfall");
             Thread.sleep(2000);
-            int DatorTal = tärning.nextInt(5)+1;
+            int DatorTal2 = tärning.nextInt(5)+1;
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" Attackerar med siffran "+DatorTal); 
+            System.out.println(DatorNamn+" Attackerar med siffran "+DatorTal2); 
             Thread.sleep(2000);
-            int SpelareTal= tärning.nextInt(5)+1;
-            System.out.println(SpelarNamn+" Försvarar med siffran "+SpelareTal); 
+            int SpelareTal2= tärning.nextInt(5)+1;
+            System.out.println(SpelarNamn+" Försvarar med siffran "+SpelareTal2); 
         
-            if (DatorTal>SpelareTal) {
-            int Skada=DatorTal-SpelareTal;
+            if (DatorTal2>SpelareTal2) {
+            int Skada=DatorTal2-SpelareTal2;
             Thread.sleep(2000);
             System.out.println(DatorNamn+" träffade "+SpelarNamn+" med skadan "+Skada);
             SpelareHP-=Skada;
@@ -166,11 +168,27 @@ public class App {
             }
         }
 
+        //Dator Stort Anfall
+
         else{
             System.out.println(DatorNamn+" valde Stort Anfall");
-        }
+            int DatorTal = tärning.nextInt(5) + 1;
+            System.out.println(DatorNamn + " Attackerar med siffran " +DatorTal);
+            Thread.sleep(2000);
+            int SpelareTal = tärning.nextInt(10) + 1;
+            System.out.println(SpelarNamn + " Försvarar med siffran " + SpelareTal);
 
+            if (DatorTal>SpelareTal){
+            int Skada=DatorTal*2-SpelareTal;
+            Thread.sleep(2000);
+            System.out.println(DatorNamn+" träffade "+SpelarNamn+" med skadan "+Skada);
+            SpelareHP-=Skada;
+            VemsTur="Spelare";
+            }
         }
      }
   }
+ }
 }
+ 
+
