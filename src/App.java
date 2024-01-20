@@ -202,6 +202,16 @@ public class App {
         }
      }
   }
+
+if (SpelareHP <= 0) {
+    Thread.sleep(2000);
+    System.out.println(DatorNamn + " vinner! " + SpelarNamn + " är besegrad.");
+} 
+    
+else if (DatorHP <= 0) {
+    Thread.sleep(2000);
+    System.out.println(SpelarNamn + " vinner! " + DatorNamn + " är besegrad.");
+}
  }
 }
  
