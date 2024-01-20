@@ -38,6 +38,13 @@ public class App {
             VemsTur="Spelare";
             }
 
+            else if (SpelareSlumpStart==DatorSlumpStart){
+            System.out.println(SpelarNamn+" fick högst! " +SpelarNamn+ " börjar");
+            VemsTur="Spelare";
+            }
+
+
+
             else{
             Thread.sleep(2000);
             System.out.println(DatorNamn+" fick högst! "+DatorNamn+ " börjar");
@@ -60,11 +67,14 @@ public class App {
 
         while (SpelareHP > 0 && DatorHP > 0)
         {
-        System.out.println(SpelarNamn+" HP:"+SpelareHP);
-        System.out.println(DatorNamn+" HP:"+DatorHP);
-
+    
         if (VemsTur.equals("Spelare")) {
-            System.out.println("Det är spelarens tur att agera.");
+            Thread.sleep(2000);
+            System.out.println(SpelarNamn+" HP:"+SpelareHP);
+            Thread.sleep(2000);
+            System.out.println(DatorNamn+" HP:"+DatorHP);
+            Thread.sleep(2000);
+            System.out.println("Det är "+SpelarNamn+"s" +" tur att agera.");
             Thread.sleep(2000);
             System.out.println("Välj nästa drag:\n 1. Anfall\n 2. Stort anfall (riskabelt)");
             String TurVal=t.nextLine();
@@ -75,20 +85,36 @@ public class App {
         {
              SpelareTal= tärning.nextInt(5)+1; 
             System.out.println(SpelarNamn+" Attackerar med siffran "+SpelareTal); 
+            Thread.sleep(2000);
              DatorTal= tärning.nextInt(5)+1;
             System.out.println(DatorNamn+" Försvarar med siffran "+DatorTal); 
         }
         if (SpelareTal>DatorTal)
         {
         int Skada=SpelareTal-DatorTal;
+        Thread.sleep(2000);
         System.out.println(SpelarNamn+" träffade "+DatorNamn+" med skadan "+Skada);
         DatorHP-=Skada;
         VemsTur="Dator";
         }
 
+        else{
+        Thread.sleep(2000);
+        System.out.println(DatorNamn+"blockar attacken! Ingen skadas");
+        Thread.sleep(2000);
+        VemsTur="Dator";
         }
-    
-        
+
+        }
+        else if(VemsTur.equals("Dator")){
+        Thread.sleep(2000);
+        System.out.println(SpelarNamn+" HP:"+SpelareHP);
+        Thread.sleep(2000);
+        System.out.println(DatorNamn+" HP:"+DatorHP);
+        Thread.sleep(2000);
+        System.out.println("Det är "+DatorNamn+"s" +" tur att agera.");
+        Thread.sleep(2000);
+        }
      }
   }
 }
