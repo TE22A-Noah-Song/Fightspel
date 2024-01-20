@@ -101,6 +101,13 @@ public class App {
         DatorHP-=Skada;
         VemsTur="Dator";
         }
+
+        else{
+            Thread.sleep(2000);
+            System.out.println(DatorNamn+" blockar attacken! Ingen skadas");
+            Thread.sleep(2000);
+            VemsTur="Dator";
+            }
         }
         
         //Stort Anfall
@@ -173,6 +180,7 @@ public class App {
         else{
             System.out.println(DatorNamn+" valde Stort Anfall");
             int DatorTal = tärning.nextInt(5) + 1;
+            Thread.sleep(2000);
             System.out.println(DatorNamn + " Attackerar med siffran " +DatorTal);
             Thread.sleep(2000);
             int SpelareTal = tärning.nextInt(10) + 1;
@@ -181,8 +189,14 @@ public class App {
             if (DatorTal>SpelareTal){
             int Skada=DatorTal*2-SpelareTal;
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" träffade "+SpelarNamn+" med skadan "+Skada);
+            System.out.println(DatorNamn+" träffade "+SpelarNamn+" med skadan "+Skada+", DUBBELSKADA!");
             SpelareHP-=Skada;
+            VemsTur="Spelare";
+            }
+            else{
+            Thread.sleep(2000);
+            System.out.println(SpelarNamn+" blockar attacken! Ingen skadas");
+            Thread.sleep(2000);
             VemsTur="Spelare";
             }
         }
