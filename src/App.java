@@ -90,8 +90,7 @@ public class App {
             Thread.sleep(2000);
              DatorTal= tärning.nextInt(5)+1;
             System.out.println(DatorNamn+" Försvarar med siffran "+DatorTal); 
-        }
-        if (SpelareTal>DatorTal)
+            if (SpelareTal>DatorTal)
         {
         int Skada=SpelareTal-DatorTal;
         Thread.sleep(2000);
@@ -99,15 +98,35 @@ public class App {
         DatorHP-=Skada;
         VemsTur="Dator";
         }
-
-        else{
-        Thread.sleep(2000);
-        System.out.println(DatorNamn+"blockar attacken! Ingen skadas");
-        Thread.sleep(2000);
-        VemsTur="Dator";
         }
+        
 
+        else if (TurVal.equalsIgnoreCase("Stort Anfall")) {
+            SpelareTal = tärning.nextInt(5) + 1;
+            System.out.println(SpelarNamn + " Attackerar med siffran " + SpelareTal);
+            Thread.sleep(2000);
+            DatorTal = tärning.nextInt(10) + 1;
+            System.out.println(DatorNamn + " Försvarar med siffran " + DatorTal);
+        
+            if (SpelareTal > DatorTal) {
+                int Skada2 = SpelareTal * 2 - DatorTal;
+                Thread.sleep(2000);
+                System.out.println(SpelarNamn + " träffade " + DatorNamn + " med skadan " + Skada2+", DUBBELSKADA!");
+                DatorHP -= Skada2;
+                VemsTur = "Dator";
+            } else {
+                Thread.sleep(2000);
+                System.out.println(DatorNamn + " blockar attacken! Ingen skadas");
+                Thread.sleep(2000);
+                VemsTur = "Dator";
+            }
+        } else {
+            // Move the else block here to handle the case when TurVal is neither "Anfall" nor "Stort Anfall"
+            Thread.sleep(2000);
+            System.out.println(DatorNamn + " valde Stort Anfall");
         }
+        }
+        
 
         //Datorns tur
 
@@ -134,7 +153,7 @@ public class App {
             if (DatorTal>SpelareTal) {
             int Skada=DatorTal-SpelareTal;
             Thread.sleep(2000);
-            System.out.println(DatorNamn+"träffade "+SpelarNamn+" med skadan"+Skada);
+            System.out.println(DatorNamn+" träffade "+SpelarNamn+" med skadan "+Skada);
             SpelareHP-=Skada;
             VemsTur="Spelare";
             }
