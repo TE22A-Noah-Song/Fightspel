@@ -67,7 +67,9 @@ public class App {
 
         while (SpelareHP > 0 && DatorHP > 0)
         {
-    
+            
+        //Spelarens tur
+
         if (VemsTur.equals("Spelare")) {
             Thread.sleep(2000);
             System.out.println(SpelarNamn+" HP:"+SpelareHP);
@@ -106,6 +108,9 @@ public class App {
         }
 
         }
+
+        //Datorns tur
+
         else if(VemsTur.equals("Dator")){
         Thread.sleep(2000);
         System.out.println(SpelarNamn+" HP:"+SpelareHP);
@@ -114,6 +119,38 @@ public class App {
         Thread.sleep(2000);
         System.out.println("Det är "+DatorNamn+"s" +" tur att agera.");
         Thread.sleep(2000);
+        int DatorVal= tärning.nextInt(2)+1;
+        if (DatorVal==1){
+            Thread.sleep(2000);
+            System.out.println(DatorNamn+" valde Anfall");
+            Thread.sleep(2000);
+            int DatorTal = tärning.nextInt(5)+1;
+            Thread.sleep(2000);
+            System.out.println(DatorNamn+" Attackerar med siffran "+DatorTal); 
+            Thread.sleep(2000);
+            int SpelareTal= tärning.nextInt(5)+1;
+            System.out.println(SpelarNamn+" Försvarar med siffran "+SpelareTal); 
+        
+            if (DatorTal>SpelareTal) {
+            int Skada=DatorTal-SpelareTal;
+            Thread.sleep(2000);
+            System.out.println(DatorNamn+"träffade "+SpelarNamn+" med skadan"+Skada);
+            SpelareHP-=Skada;
+            VemsTur="Spelare";
+            }
+
+            else{
+            Thread.sleep(2000);
+            System.out.println(SpelarNamn+" blockar attacken! Ingen skadas");
+            Thread.sleep(2000);
+            VemsTur="Spelare";
+            }
+        }
+
+        else{
+            System.out.println(DatorNamn+" valde Stort Anfall");
+        }
+
         }
      }
   }
