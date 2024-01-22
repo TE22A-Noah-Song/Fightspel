@@ -16,14 +16,12 @@ public class App {
         String SpelarNamn = ""; 
         String DatorNamn = "";
         String VemsTur = "";
-        if (val.equalsIgnoreCase("Starta"))
+        if (val.equalsIgnoreCase("Starta") || val.equals("1"))
         {
             System.out.println("Döp din spelare:");
             SpelarNamn=t.nextLine();
             System.out.println("Döp din motståndare:");
             DatorNamn=t.nextLine();
-
-
 
             System.out.println("Nu slumpas vem som ska börja. Den som får högst börjar!");
             Thread.sleep(2000);
@@ -39,11 +37,10 @@ public class App {
             }
 
             else if (SpelareSlumpStart==DatorSlumpStart){
+            Thread.sleep(2000);
             System.out.println(SpelarNamn+" fick högst! " +SpelarNamn+ " börjar");
             VemsTur="Spelare";
             }
-
-
 
             else{
             Thread.sleep(2000);
@@ -52,7 +49,7 @@ public class App {
             }
         }
 
-        else if (val.equalsIgnoreCase("Avsluta"))
+        else if (val.equalsIgnoreCase("Avsluta")||val.equals("2"))
         {
             System.out.println("Avslutar spelet....");  
             System.exit(0);  
@@ -86,7 +83,7 @@ public class App {
 
         //Anfall
 
-        if (TurVal.equalsIgnoreCase("Anfall"))
+        if (TurVal.equalsIgnoreCase("Anfall")||TurVal.equals("1"))
         {
              SpelareTal= tärning.nextInt(5)+1; 
             System.out.println(SpelarNamn+" Attackerar med siffran "+SpelareTal); 
@@ -112,7 +109,7 @@ public class App {
         
         //Stort Anfall
 
-        else if (TurVal.equalsIgnoreCase("Stort Anfall")) {
+        else if (TurVal.equalsIgnoreCase("Stort Anfall")||TurVal.equals("2")) {
             SpelareTal = tärning.nextInt(5) + 1;
             System.out.println(SpelarNamn + " Attackerar med siffran " + SpelareTal);
             Thread.sleep(2000);
@@ -132,6 +129,11 @@ public class App {
                 VemsTur = "Dator";
             }
         } 
+
+        else{
+        System.out.println("Fel inmatning. Välj mellan Anfall/Stort Anfall");
+        VemsTur="Spelare";
+        }
     }
 
     //Datorns tur
