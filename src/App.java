@@ -1,3 +1,5 @@
+//Noah Söng TE22A
+
 import java.util.Scanner;
 import java.util.Random;
 public class App {
@@ -5,215 +7,217 @@ public class App {
 
         //Slumpar tal
         Random tärning= new Random();
-        int SpelareSlumpStart = tärning.nextInt(10)+1;
-        int DatorSlumpStart = tärning.nextInt(10)+1;
+        int Spelare_Slump_Start = tärning.nextInt(10)+1;
+        int Dator_Slump_Start = tärning.nextInt(10)+1;
 
         // Meny och Vem börjar
         Scanner t=new Scanner(System.in);
         System.out.println("Välkommen till fightspel. Välj val:\n 1. Starta\n 2. Avsluta");
         String val=t.nextLine();
 
-        String SpelarNamn = ""; 
-        String DatorNamn = "";
-        String VemsTur = "";
-        if (val.equalsIgnoreCase("Starta") || val.equals("1"))
-        {
-            System.out.println("Döp din spelare:");
-            SpelarNamn=t.nextLine();
-            System.out.println("Döp din motståndare:");
-            DatorNamn=t.nextLine();
+        String Spelar_Namn = ""; 
+        String Dator_Namn = "";
+        String Vems_Tur = "";
 
-            System.out.println("Nu slumpas vem som ska börja. Den som får högst börjar!");
-            Thread.sleep(2000);
-            System.out.println(SpelarNamn+" fick:"+SpelareSlumpStart);
-            Thread.sleep(2000);
-            System.out.println(DatorNamn+" fick:"+DatorSlumpStart);
+        switch (val.toLowerCase()) {
+            case "starta":
+            case "1":
+                System.out.println("Döp din spelare:");
+                Spelar_Namn = t.nextLine();
+                System.out.println("Döp din motståndare:");
+                Dator_Namn = t.nextLine();
 
-            if (SpelareSlumpStart>DatorSlumpStart)
-            {
-            Thread.sleep(2000);
-            System.out.println(SpelarNamn+" fick högst! " +SpelarNamn+ " börjar");
-            VemsTur="Spelare";
-            }
+                System.out.println("Nu slumpas vem som ska börja. Den som får högst börjar!");
+                Thread.sleep(2000);
+                System.out.println(Spelar_Namn + " fick:" + Spelare_Slump_Start);
+                Thread.sleep(2000);
+                System.out.println(Dator_Namn + " fick:" + Dator_Slump_Start);
 
-            else if (SpelareSlumpStart==DatorSlumpStart){
-            Thread.sleep(2000);
-            System.out.println(SpelarNamn+" fick högst! " +SpelarNamn+ " börjar");
-            VemsTur="Spelare";
-            }
+                if (Spelare_Slump_Start > Dator_Slump_Start || Spelare_Slump_Start == Dator_Slump_Start) {
+                    Thread.sleep(2000);
+                    System.out.println(Spelar_Namn + " fick högst! " + Spelar_Namn + " börjar");
+                    Vems_Tur = "Spelare";
+                } else {
+                    Thread.sleep(2000);
+                    System.out.println(Dator_Namn + " fick högst! " + Dator_Namn + " börjar");
+                    Vems_Tur = "Dator";
+                }
+                break;
 
-            else{
-            Thread.sleep(2000);
-            System.out.println(DatorNamn+" fick högst! "+DatorNamn+ " börjar");
-            VemsTur="Dator";
-            }
+            case "avsluta":
+            case "2":
+                System.out.println("Avslutar spelet....");
+                System.exit(0);
+                break;
+
+            default:
+                System.out.println("Fel inmatning! Vänligen välj Starta/Avsluta");
         }
+        
+        int Spelare_HP=10;
+        int Dator_HP=10;
 
-        else if (val.equalsIgnoreCase("Avsluta")||val.equals("2"))
-        {
-            System.out.println("Avslutar spelet....");  
-            System.exit(0);  
-        }
-
-        else{
-            System.out.println("Fel inmatning! Vänligen välj Starta/Avsluta");
-            }
-
-        int SpelareHP=10;
-        int DatorHP=10;
-
-        while (SpelareHP > 0 && DatorHP > 0)
+        while (Spelare_HP > 0 && Dator_HP > 0)
         {
             
         //Spelarens tur
 
-        if (VemsTur.equals("Spelare")) {
+        if (Vems_Tur.equals("Spelare")) {
             Thread.sleep(2000);
-            System.out.println(SpelarNamn+" HP:"+SpelareHP);
+            System.out.println(Spelar_Namn+" HP:"+Spelare_HP);
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" HP:"+DatorHP);
+            System.out.println(Dator_Namn+" HP:"+Dator_HP);
             Thread.sleep(2000);
-            System.out.println("Det är "+SpelarNamn+"s" +" tur att agera.");
+            System.out.println("Det är "+Spelar_Namn+"s" +" tur att agera.");
             Thread.sleep(2000);
             System.out.println("Välj nästa drag:\n 1. Anfall\n 2. Stort anfall (riskabelt)");
-            String TurVal=t.nextLine();
+            String Fight_Val=t.nextLine();
         
-        int SpelareTal = tärning.nextInt(5) + 1;
-        int DatorTal = tärning.nextInt(5) + 1;
+        int Spelare_Tal = tärning.nextInt(5) + 1;
+        int Dator_Tal = tärning.nextInt(5) + 1;
 
         //Anfall
 
-        if (TurVal.equalsIgnoreCase("Anfall")||TurVal.equals("1"))
+        if (Fight_Val.equalsIgnoreCase("Anfall")||Fight_Val.equals("1"))
         {
-             SpelareTal= tärning.nextInt(5)+1; 
-            System.out.println(SpelarNamn+" Attackerar med siffran "+SpelareTal); 
+             Spelare_Tal= tärning.nextInt(5)+1; 
+            System.out.println(Spelar_Namn+" Attackerar med siffran "+Spelare_Tal); 
             Thread.sleep(2000);
-             DatorTal= tärning.nextInt(5)+1;
-            System.out.println(DatorNamn+" Försvarar med siffran "+DatorTal); 
-            if (SpelareTal>DatorTal)
+             Dator_Tal= tärning.nextInt(5)+1;
+            System.out.println(Dator_Namn+" Försvarar med siffran "+Dator_Tal); 
+            if (Spelare_Tal>Dator_Tal)
         {
-        int Skada=SpelareTal-DatorTal;
+        int Skada=Spelare_Tal-Dator_Tal;
         Thread.sleep(2000);
-        System.out.println(SpelarNamn+" träffade "+DatorNamn+" med skadan "+Skada);
-        DatorHP-=Skada;
-        VemsTur="Dator";
+        System.out.println(Spelar_Namn+" träffade "+Dator_Namn+" med skadan "+Skada);
+        Dator_HP-=Skada;
+        Vems_Tur="Dator";
         }
 
         else{
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" blockar attacken! Ingen skadas");
+            System.out.println(Dator_Namn+" blockar attacken! Ingen skadas");
             Thread.sleep(2000);
-            VemsTur="Dator";
+            Vems_Tur="Dator";
             }
         }
         
         //Stort Anfall
 
-        else if (TurVal.equalsIgnoreCase("Stort Anfall")||TurVal.equals("2")) {
-            SpelareTal = tärning.nextInt(5) + 1;
-            System.out.println(SpelarNamn + " Attackerar med siffran " + SpelareTal);
+        else if (Fight_Val.equalsIgnoreCase("Stort Anfall")||Fight_Val.equals("2")) {
+            Spelare_Tal = tärning.nextInt(5) + 1;
+            System.out.println(Spelar_Namn + " Attackerar med siffran " + Spelare_Tal);
             Thread.sleep(2000);
-            DatorTal = tärning.nextInt(10) + 1;
-            System.out.println(DatorNamn + " Försvarar med siffran " + DatorTal);
+            Dator_Tal = tärning.nextInt(10) + 1;
+            System.out.println(Dator_Namn + " Försvarar med siffran " + Dator_Tal);
         
-            if (SpelareTal > DatorTal) {
-                int Skada2 = SpelareTal * 2 - DatorTal;
+            if (Spelare_Tal > Dator_Tal) {
+                int Skada2 = Spelare_Tal * 2 - Dator_Tal;
                 Thread.sleep(2000);
-                System.out.println(SpelarNamn + " träffade " + DatorNamn + " med skadan " + Skada2+", DUBBELSKADA!");
-                DatorHP -= Skada2;
-                VemsTur = "Dator";
+                System.out.println(Spelar_Namn + " träffade " + Dator_Namn + " med skadan " + Skada2+", DUBBELSKADA!");
+                Dator_HP -= Skada2;
+                Vems_Tur = "Dator";
             } else {
                 Thread.sleep(2000);
-                System.out.println(DatorNamn + " blockar attacken! Ingen skadas");
+                System.out.println(Dator_Namn + " blockar attacken! Ingen skadas");
                 Thread.sleep(2000);
-                VemsTur = "Dator";
+                Vems_Tur = "Dator";
             }
         } 
 
         else{
         System.out.println("Fel inmatning. Välj mellan Anfall/Stort Anfall");
-        VemsTur="Spelare";
+        Vems_Tur="Spelare";
         }
     }
 
     //Datorns tur
 
-    else if(VemsTur.equals("Dator")){
+    else if(Vems_Tur.equals("Dator")){
         Thread.sleep(2000);
-        System.out.println(SpelarNamn+" HP:"+SpelareHP);
+        System.out.println(Spelar_Namn+" HP:"+Spelare_HP);
         Thread.sleep(2000);
-        System.out.println(DatorNamn+" HP:"+DatorHP);
+        System.out.println(Dator_Namn+" HP:"+Dator_HP);
         Thread.sleep(2000);
-        System.out.println("Det är "+DatorNamn+"s" +" tur att agera.");
+        System.out.println("Det är "+Dator_Namn+"s" +" tur att agera.");
         Thread.sleep(2000);
-        int DatorVal= tärning.nextInt(2)+1;
+        int Dator_Val= tärning.nextInt(2)+1;
 
         //Dator Anfall
 
-        if (DatorVal==1){
+        if (Dator_Val==1){
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" valde Anfall");
+            System.out.println(Dator_Namn+" valde Anfall");
             Thread.sleep(2000);
-            int DatorTal2 = tärning.nextInt(5)+1;
+            int Dator_Tal_2 = tärning.nextInt(5)+1;
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" Attackerar med siffran "+DatorTal2); 
+            System.out.println(Dator_Namn+" Attackerar med siffran "+Dator_Tal_2); 
             Thread.sleep(2000);
-            int SpelareTal2= tärning.nextInt(5)+1;
-            System.out.println(SpelarNamn+" Försvarar med siffran "+SpelareTal2); 
+            int Spelare_Tal_2= tärning.nextInt(5)+1;
+            System.out.println(Spelar_Namn+" Försvarar med siffran "+Spelare_Tal_2); 
         
-            if (DatorTal2>SpelareTal2) {
-            int Skada=DatorTal2-SpelareTal2;
+            if (Dator_Tal_2>Spelare_Tal_2) {
+            int Skada=Dator_Tal_2-Spelare_Tal_2;
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" träffade "+SpelarNamn+" med skadan "+Skada);
-            SpelareHP-=Skada;
-            VemsTur="Spelare";
+            System.out.println(Dator_Namn+" träffade "+Spelar_Namn+" med skadan "+Skada);
+            Spelare_HP-=Skada;
+            Vems_Tur="Spelare";
             }
 
             else{
             Thread.sleep(2000);
-            System.out.println(SpelarNamn+" blockar attacken! Ingen skadas");
+            System.out.println(Spelar_Namn+" blockar attacken! Ingen skadas");
             Thread.sleep(2000);
-            VemsTur="Spelare";
+            Vems_Tur="Spelare";
             }
         }
 
         //Dator Stort Anfall
 
         else{
-            System.out.println(DatorNamn+" valde Stort Anfall");
-            int DatorTal = tärning.nextInt(5) + 1;
+            System.out.println(Dator_Namn+" valde Stort Anfall");
+            int Dator_Tal = tärning.nextInt(5) + 1;
             Thread.sleep(2000);
-            System.out.println(DatorNamn + " Attackerar med siffran " +DatorTal);
+            System.out.println(Dator_Namn + " Attackerar med siffran " +Dator_Tal);
             Thread.sleep(2000);
-            int SpelareTal = tärning.nextInt(10) + 1;
-            System.out.println(SpelarNamn + " Försvarar med siffran " + SpelareTal);
+            int Spelare_Tal = tärning.nextInt(10) + 1;
+            System.out.println(Spelar_Namn + " Försvarar med siffran " + Spelare_Tal);
 
-            if (DatorTal>SpelareTal){
-            int Skada=DatorTal*2-SpelareTal;
+            if (Dator_Tal>Spelare_Tal){
+            int Skada=Dator_Tal*2-Spelare_Tal;
             Thread.sleep(2000);
-            System.out.println(DatorNamn+" träffade "+SpelarNamn+" med skadan "+Skada+", DUBBELSKADA!");
-            SpelareHP-=Skada;
-            VemsTur="Spelare";
+            System.out.println(Dator_Namn+" träffade "+Spelar_Namn+" med skadan "+Skada+", DUBBELSKADA!");
+            Spelare_HP-=Skada;
+            Vems_Tur="Spelare";
             }
             else{
             Thread.sleep(2000);
-            System.out.println(SpelarNamn+" blockar attacken! Ingen skadas");
+            System.out.println(Spelar_Namn+" blockar attacken! Ingen skadas");
             Thread.sleep(2000);
-            VemsTur="Spelare";
+            Vems_Tur="Spelare";
             }
         }
      }
   }
 
-if (SpelareHP <= 0) {
+if (Spelare_HP <= 0) {
     Thread.sleep(2000);
-    System.out.println(DatorNamn + " vinner! " + SpelarNamn + " är besegrad.");
+    System.out.println(Dator_Namn + " vinner! " + Spelar_Namn + " är besegrad.");
 } 
     
-else if (DatorHP <= 0) {
+else if (Dator_HP <= 0) {
     Thread.sleep(2000);
-    System.out.println(SpelarNamn + " vinner! " + DatorNamn + " är besegrad.");
+    System.out.println(Spelar_Namn + " vinner! " + Dator_Namn + " är besegrad.");
 }
+Thread.sleep(2000);
+System.out.println("Spelet är slut! vill du köra nytt spel?\n Ja/Nej");
+String Nytt_Spel=t.nextLine();
+if (Nytt_Spel.equalsIgnoreCase("Ja")){
+Dator_HP=10;
+Spelare_HP=10;
+}
+
+
  }
 }
  
