@@ -54,19 +54,18 @@ public class App {
                 System.out.println("Fel inmatning! Vänligen välj Starta/Avsluta");
         }
         
-        int Spelare_HP=10;
-        int Dator_HP=10;
+        int[] hälsopoäng = { 10, 10 };
 
-        while (Spelare_HP > 0 && Dator_HP > 0)
+        while (hälsopoäng[0] > 0 && hälsopoäng[1] > 0)
         {
             
         //Spelarens tur
 
         if (Vems_Tur.equals("Spelare")) {
             Thread.sleep(2000);
-            System.out.println(Spelar_Namn+" HP:"+Spelare_HP);
+            System.out.println(Spelar_Namn+" HP:"+hälsopoäng[0]);
             Thread.sleep(2000);
-            System.out.println(Dator_Namn+" HP:"+Dator_HP);
+            System.out.println(Dator_Namn+" HP:"+hälsopoäng[1]);
             Thread.sleep(2000);
             System.out.println("Det är "+Spelar_Namn+"s" +" tur att agera.");
             Thread.sleep(2000);
@@ -90,7 +89,7 @@ public class App {
         int Skada=Spelare_Tal-Dator_Tal;
         Thread.sleep(2000);
         System.out.println(Spelar_Namn+" träffade "+Dator_Namn+" med skadan "+Skada);
-        Dator_HP-=Skada;
+        hälsopoäng[1]-=Skada;
         Vems_Tur="Dator";
         }
 
@@ -115,7 +114,7 @@ public class App {
                 int Skada2 = Spelare_Tal * 2 - Dator_Tal;
                 Thread.sleep(2000);
                 System.out.println(Spelar_Namn + " träffade " + Dator_Namn + " med skadan " + Skada2+", DUBBELSKADA!");
-                Dator_HP -= Skada2;
+                hälsopoäng[1] -= Skada2;
                 Vems_Tur = "Dator";
             } else {
                 Thread.sleep(2000);
@@ -135,9 +134,9 @@ public class App {
 
     else if(Vems_Tur.equals("Dator")){
         Thread.sleep(2000);
-        System.out.println(Spelar_Namn+" HP:"+Spelare_HP);
+        System.out.println(Spelar_Namn+" HP:"+hälsopoäng[0]);
         Thread.sleep(2000);
-        System.out.println(Dator_Namn+" HP:"+Dator_HP);
+        System.out.println(Dator_Namn+" HP:"+hälsopoäng[1]);
         Thread.sleep(2000);
         System.out.println("Det är "+Dator_Namn+"s" +" tur att agera.");
         Thread.sleep(2000);
@@ -160,7 +159,7 @@ public class App {
             int Skada=Dator_Tal_2-Spelare_Tal_2;
             Thread.sleep(2000);
             System.out.println(Dator_Namn+" träffade "+Spelar_Namn+" med skadan "+Skada);
-            Spelare_HP-=Skada;
+            hälsopoäng[0]-=Skada;
             Vems_Tur="Spelare";
             }
 
@@ -187,7 +186,7 @@ public class App {
             int Skada=Dator_Tal*2-Spelare_Tal;
             Thread.sleep(2000);
             System.out.println(Dator_Namn+" träffade "+Spelar_Namn+" med skadan "+Skada+", DUBBELSKADA!");
-            Spelare_HP-=Skada;
+            hälsopoäng[0]-=Skada;
             Vems_Tur="Spelare";
             }
             else{
@@ -200,12 +199,12 @@ public class App {
      }
   }
 
-if (Spelare_HP <= 0) {
+if (hälsopoäng[0] <= 0) {
     Thread.sleep(2000);
     System.out.println(Dator_Namn + " vinner! " + Spelar_Namn + " är besegrad.");
 } 
     
-else if (Dator_HP <= 0) {
+else if (hälsopoäng[1] <= 0) {
     Thread.sleep(2000);
     System.out.println(Spelar_Namn + " vinner! " + Dator_Namn + " är besegrad.");
 }
@@ -213,8 +212,8 @@ Thread.sleep(2000);
 System.out.println("Spelet är slut! vill du köra nytt spel?\n Ja/Nej");
 String Nytt_Spel=t.nextLine();
 if (Nytt_Spel.equalsIgnoreCase("Ja")){
-Dator_HP=10;
-Spelare_HP=10;
+hälsopoäng[0] = 10;
+hälsopoäng[1] = 10;
 }
 
 
