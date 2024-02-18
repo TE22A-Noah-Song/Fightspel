@@ -205,7 +205,7 @@ public class App {
      }
   }
 
-  //Vinnarmeddelande
+//Vinnarmeddelande
 if (hälsopoäng[0] <= 0) {
     Thread.sleep(2000);
     System.out.println(dator_namn + " vinner! " + spelar_namn + " är besegrad.");
